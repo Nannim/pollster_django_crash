@@ -10,11 +10,17 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <title>Pollster {% block title %}{% endblock %}</title>
+    <title>Home | Welcome {% block title %}{% endblock %}</title>
   </head>
   <body>
     <!-- NavBar -->
     {% include 'partials/_navbar.html' %}
+    <li><a class="navbar-link" href="{% url 'dappx:register' %}">Register</a></li>
+    {% if user.is_authenticated %}
+    <li><a href="{% url 'logout' %}">Logout</a></li>
+    {% else %}
+    <li><a class="navbar-link" href="{% url 'dappx:user_login' %}">Login</a></li>
+    {% endif %}
     <div class="container">
       <div class="row">
         <div class="col-md-6 m-auto">

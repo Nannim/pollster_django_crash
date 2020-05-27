@@ -15,9 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.conf.urls import url
+
+
+app_name = 'pollster'
 
 urlpatterns = [
     path('', include('pages.urls')),
-    path('polls/', include('polls.urls')),
+    path('pollster/', include('pollster.urls')),
     path('admin/', admin.site.urls),
+    url(r'^register/$',views.register,name='register'),
+    url(r'^user_login/$',views.user_login,name='user_login'),
 ]
